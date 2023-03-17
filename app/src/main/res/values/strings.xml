@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="message">Good evening</string>
+    <string name="btn">connect</string>
+    <string name="sendHealthRequest">Check Connection</string>
+    <string name="import_backup">Import backup</string>
+    <string name="export_backup">Export backup</string>
+    <string name="import_backup_with_syncthing">Import backup with syncthing</string>
+    <string name="syncthing_info">Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time, safely protected from prying eyes. You need to install the android app to connect it for your transfer.\n<a href="https://syncthing.net">Learn more</a></string>
+    <string name="syncthingPackage">com.nutomic.syncthingandroid</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
