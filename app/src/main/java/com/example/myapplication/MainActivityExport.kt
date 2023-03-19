@@ -1,13 +1,13 @@
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
+import Requester
 import android.os.Bundle
 import android.widget.Button
 import android.widget.NumberPicker
 import android.widget.Toast
-import getDefaultFolder
-import getHealth
-import okhttp3.guide.GetExample
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
+
 
 class MainActivityExport : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,33 +18,44 @@ class MainActivityExport : AppCompatActivity() {
         actionbar?.setDisplayHomeAsUpEnabled(true)
 
 
-
-        // storing ID of the button
-        // in a variable
         val button = findViewById<Button>(R.id.button)
 
-        // operations to be performed
-        // when user tap on the button
-        button?.setOnClickListener()
-        {
-            // displaying a toast message
-            Toast.makeText(this@MainActivityExport, R.string.message, Toast.LENGTH_LONG).show()
+        button?.setOnClickListener {
+            val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+            ft.replace(R.id.fragment_exportr, SyncthingConnectFragment())
+
+            ft.commit()
         }
 
-        var btnRequest = findViewById(R.id.btnRequest) as Button?
-        btnRequest?.setOnClickListener(){
-            val response = getHealth()
-            Toast.makeText(this@MainActivityExport, response.body()?.string() ?: "", Toast.LENGTH_LONG).show()
+        var btnRequest = findViewById<Button>(R.id.btnRequest)
+        btnRequest?.setOnClickListener {
+            val requester = Requester()
+            val response = requester.getHealth()
+            Toast.makeText(
+                this@MainActivityExport,
+                response.body()?.string() ?: "",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
-        var picker1 = findViewById<NumberPicker>(R.id.numberPicker);
-        picker1.setMaxValue(60);
-        picker1.setMinValue(0);
+        var valueSelector = findViewById<NumberPicker>(R.id.timer_selector_value)
+        var values = arrayOf("minutes", "hours", "days", "weeks")
+        valueSelector.minValue = 0
+        valueSelector.maxValue = values.size - 1
+        valueSelector.displayedValues = values
+
+        var unitselector = findViewById<NumberPicker>(R.id.timer_selector_unit)
+        unitselector.minValue = 0
+        unitselector.maxValue = 100
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
+
+
 }
 

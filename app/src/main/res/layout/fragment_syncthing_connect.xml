@@ -7,11 +7,11 @@
 
 
     <TextView
-        android:id="@+id/tvBlueLabel"
+        android:id="@+id/deviceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:text="Devices"
+        android:text="@string/devices"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,10 +25,12 @@
         android:layout_marginTop="220dp"
         android:layout_marginEnd="14dp"
         android:clickable="true"
-        android:contentDescription="add a new device"
+        android:contentDescription="@string/add_a_new_device"
+        android:focusable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -46,21 +48,11 @@
         android:id="@+id/startSynchronisation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="4dp"
-        android:text="Start synchronisation"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="64dp"
-        android:text="Restore latest backup"
-        app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="247dp"
+        android:text="@string/start_synchronisation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

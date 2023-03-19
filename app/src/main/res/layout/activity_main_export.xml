@@ -7,47 +7,80 @@
     tools:context=".MainActivityExport">
 
 
+    <NumberPicker
+        android:id="@+id/timer_selector_unit"
+        android:layout_width="61dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="85dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/timer_selector_value"
+        android:layout_width="60dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/fragment_exportr"
+        android:layout_width="371dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#4CAF50"
+        android:layout_width="179dp"
+        android:layout_height="54dp"
+        android:background="#0E408C"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:text="@string/btn"
-        android:textColor="#0D47A1"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/btnRequest"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.926" />
+        app:layout_constraintVertical_bias="0.87" />
 
     <Button
         android:id="@+id/btnRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="22dp"
-        android:background="#414af4"
+        android:layout_marginTop="116dp"
+        android:background="#2128B3"
         android:text="@string/sendHealthRequest"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/numberPicker"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <NumberPicker
-        android:id="@+id/numberPicker"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnRequest"
-        app:layout_constraintTop_toBottomOf="@+id/btnRequest" />
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="119dp"
+        android:text="@string/duration_picker"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_exportr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

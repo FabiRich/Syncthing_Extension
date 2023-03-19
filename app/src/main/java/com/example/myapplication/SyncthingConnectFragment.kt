@@ -1,6 +1,7 @@
 package com.example.myapplication
 
-import android.content.*
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -15,24 +17,10 @@ import androidx.fragment.app.Fragment
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SyncthingConnectFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SyncthingConnectFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
-    val passphrase = "99923 94643 59791 90775 79277 90124"
-
-
-
-
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,28 +32,37 @@ class SyncthingConnectFragment : Fragment() {
 //            val i = Intent()
 //            i.action = "com.nutomic.syncthingandroid.action.START"
             val intent = Intent("com.nutomic.syncthingandroid.action.START")
-//            val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
-//                putExtra(AlarmClock.EXTRA_MESSAGE, "Good evening")
-//                putExtra(AlarmClock.EXTRA_HOUR, 2)
-//                putExtra(AlarmClock.EXTRA_MINUTES, 30)
-//            }
+            intent.setPackage("com.nutomic.syncthingandroid")
             try {
                 activity?.baseContext?.sendBroadcast(intent)
-//                startActivity(intent)
-                Toast.makeText(this@SyncthingConnectFragment.context, "Hat funktioniert", Toast.LENGTH_LONG).show()
+                startActivity(intent)
+                Toast.makeText(
+                    this@SyncthingConnectFragment.context,
+                    "Hat funktioniert",
+                    Toast.LENGTH_LONG
+                ).show()
             } catch (e: ActivityNotFoundException) {
-                Toast.makeText(this@SyncthingConnectFragment.context, R.string.message, Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    this@SyncthingConnectFragment.context,
+                    R.string.message,
+                    Toast.LENGTH_LONG
+                ).show()
             }
+        }
 
-
-
-
+        var buttonAddDevice =
+            getView()?.findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        buttonAddDevice?.setOnClickListener {
+            val launchSyncthing =
+                activity?.packageManager?.getLaunchIntentForPackage("com.nutomic.syncthingandroid")
+            startActivity(launchSyncthing)
         }
     }
 
     fun stopSyncthing(){
         val i = Intent()
         i.action = "com.nutomic.syncthingandroid.action.STOPP"
+        i.setPackage("com.nutomic.syncthingandroid")
         context?.sendBroadcast(i)
     }
 
@@ -75,13 +72,6 @@ class SyncthingConnectFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
-
-
-
-
-
     }
 
     override fun onCreateView(
